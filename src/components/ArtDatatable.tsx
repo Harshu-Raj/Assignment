@@ -200,13 +200,13 @@ const ArtDataTable: React.FC = () => {
       >
         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
         <Column field="id" header={codeHeaderTemplate}></Column>
-        <Column field="title" header="Name"></Column>
+        <Column field="title" header="Title"></Column>
         
         <Column field="place_of_origin" header="Place of Origin"></Column>
         <Column field="artist_display" header="Artist Display"></Column>
         <Column field="inscriptions" header="Inscriptions"></Column>
-        <Column field="date_start" header="Date Start"></Column>
-        <Column field="date_end" header="Date End"></Column>
+        <Column field="date_start" header="Date-Start"></Column>
+        <Column field="date_end" header="Date-End"></Column>
       </DataTable>
 
       <OverlayPanel ref={op} id="overlay_panel">
