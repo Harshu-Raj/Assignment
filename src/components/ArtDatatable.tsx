@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { Checkbox } from 'primereact/checkbox';
+
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { OverlayPanel } from 'primereact/overlaypanel';
@@ -22,7 +22,7 @@ const ArtDataTable: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [totalRecords, setTotalRecords] = useState<number>(0);
   const [first, setFirst] = useState<number>(0);
-  const [rows, setRows] = useState<number>(12); 
+  const [rows, setRows] = useState<number>(12); // Assuming 12 records per page
   const [selection, setSelection] = useState<ArtItem[]>([]);
   const [persistentSelectedItems, setPersistentSelectedItems] = useState<Map<string, ArtItem>>(new Map());
 
@@ -92,12 +92,13 @@ const ArtDataTable: React.FC = () => {
   };
 
 
-  const codeHeaderTemplate = (options: any) => {
+  const codeHeaderTemplate = () => {
     return (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <span>Code</span>
         <Button
           icon="pi pi-chevron-down"
-          className="p-button-text p-button-sm" 
+          className="p-button-text p-button-sm"
           onClick={(e) => {
             setNumRowsToSelect('');
             op.current?.toggle(e);
@@ -109,9 +110,8 @@ const ArtDataTable: React.FC = () => {
     );
   };
 
-  
   const overlayPanelContent = (
-    <div style={{ display: 'flex', gap: '5px' }}> 
+    <div style={{ display: 'flex', gap: '5px' }}>
       <InputText
         placeholder={`Enter total rows to select (max ${totalRecords})...`}
         value={numRowsToSelect}
@@ -136,7 +136,6 @@ const ArtDataTable: React.FC = () => {
             return;
           }
 
-          
           setPersistentSelectedItems(new Map());
           setSelection([]);
 
@@ -201,7 +200,8 @@ const ArtDataTable: React.FC = () => {
       >
         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
         <Column field="id" header={codeHeaderTemplate}></Column>
-        <Column field="title" header="Title"></Column>
+        <Column field="title" header="Name"></Column>
+        <Column field="category" header="Category"></Column>
         <Column field="place_of_origin" header="Place of Origin"></Column>
         <Column field="artist_display" header="Artist Display"></Column>
         <Column field="inscriptions" header="Inscriptions"></Column>
