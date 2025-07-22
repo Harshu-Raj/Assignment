@@ -22,7 +22,7 @@ const ArtDataTable: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [totalRecords, setTotalRecords] = useState<number>(0);
   const [first, setFirst] = useState<number>(0);
-  const [rows, setRows] = useState<number>(12); // Assuming 12 records per page
+  const [rows, setRows] = useState<number>(12); 
   const [selection, setSelection] = useState<ArtItem[]>([]);
   const [persistentSelectedItems, setPersistentSelectedItems] = useState<Map<string, ArtItem>>(new Map());
 
@@ -91,13 +91,13 @@ const ArtDataTable: React.FC = () => {
     });
   };
 
-  // Simplified Custom Header Template for the 'Code' column
+
   const codeHeaderTemplate = (options: any) => {
     return (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Button
           icon="pi pi-chevron-down"
-          className="p-button-text p-button-sm" // Keep these for basic PrimeReact button styling
+          className="p-button-text p-button-sm" 
           onClick={(e) => {
             setNumRowsToSelect('');
             op.current?.toggle(e);
@@ -109,9 +109,9 @@ const ArtDataTable: React.FC = () => {
     );
   };
 
-  // Simplified Content for the OverlayPanel
+  
   const overlayPanelContent = (
-    <div style={{ display: 'flex', gap: '5px' }}> {/* Simple flexbox for spacing */}
+    <div style={{ display: 'flex', gap: '5px' }}> 
       <InputText
         placeholder={`Enter total rows to select (max ${totalRecords})...`}
         value={numRowsToSelect}
@@ -136,7 +136,7 @@ const ArtDataTable: React.FC = () => {
             return;
           }
 
-          // Clear ALL previous selections for a fresh start with global selection
+          
           setPersistentSelectedItems(new Map());
           setSelection([]);
 
@@ -182,7 +182,7 @@ const ArtDataTable: React.FC = () => {
   );
 
   return (
-    <div style={{ margin: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}> {/* Simple container styling */}
+    <div style={{ margin: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}>
       <Toast ref={toast} />
       <DataTable
         value={data}
@@ -201,8 +201,7 @@ const ArtDataTable: React.FC = () => {
       >
         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
         <Column field="id" header={codeHeaderTemplate}></Column>
-        <Column field="title" header="Name"></Column>
-        <Column field="category" header="Category"></Column>
+        <Column field="title" header="Title"></Column>
         <Column field="place_of_origin" header="Place of Origin"></Column>
         <Column field="artist_display" header="Artist Display"></Column>
         <Column field="inscriptions" header="Inscriptions"></Column>
