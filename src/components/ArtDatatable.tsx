@@ -95,7 +95,7 @@ const ArtDataTable: React.FC = () => {
   const codeHeaderTemplate = () => {
     return (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <span>Code</span>
+        
         <Button
           icon="pi pi-chevron-down"
           className="p-button-text p-button-sm"
@@ -201,7 +201,7 @@ const ArtDataTable: React.FC = () => {
         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
         <Column field="id" header={codeHeaderTemplate}></Column>
         <Column field="title" header="Name"></Column>
-        <Column field="category" header="Category"></Column>
+        
         <Column field="place_of_origin" header="Place of Origin"></Column>
         <Column field="artist_display" header="Artist Display"></Column>
         <Column field="inscriptions" header="Inscriptions"></Column>
